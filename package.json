@@ -2,6 +2,8 @@
   "name": "pg-anon-dump",
   "description": "Export postgreSQL dump file to anonymize",
   "version": "1.0.0",
+  "homepage": "https://github.com/Chancellor-Arthur/pg-anon-dump",
+  "repository": "Chancellor-Arthur/pg-anon-dump",
   "bin": {
     "pg-anonymizer": "./bin/run"
   },
