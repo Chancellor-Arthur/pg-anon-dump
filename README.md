@@ -22,8 +22,7 @@ npx pg-anon-dump in.sql -o - | psql DATABASE_URL
 Use `--list` option with a comma separated list of column name:
 
 ```bash
-npx pg-anon-dump in.sql \
-  --list=email,firstName,lastName,phone
+npx pg-anon-dump in.sql --list=email,firstName,lastName,phone
 ```
 
 Specifying another list via `--list` replace the default automatically anonymized values:
@@ -41,8 +40,7 @@ public.user.email,public.product.description,email,name
 Alternatively use `--configFile` option to specify a file with a list of column names and optional replacements, one per line:
 
 ```bash
-npx pg-anon-dump in.sql \
-  --configFile /path/to/file
+npx pg-anon-dump in.sql --configFile /path/to/file
 ```
 
 #### Customize replacements 
@@ -50,24 +48,20 @@ npx pg-anon-dump in.sql \
 You can also choose which faker function you want to use to replace data (default is `faker.random.word`):
 
 ```bash
-npx pg-anon-dump in.sql \
-  --list=firstName:faker.name.firstName,lastName:faker.name.lastName
+npx pg-anon-dump in.sql --list=firstName:faker.name.firstName,lastName:faker.name.lastName
 ```
 
 :point_right: You don't need to specify faker function since the command will try to find correct function via column name.
 
 You can use plain text too for static replacements:
 ```bash
-npx pg-anon-dump in.sql \
-  --list=textcol:hello,jsoncol:{},intcol:12
+npx pg-anon-dump in.sql --list=textcol:hello,jsoncol:{},intcol:12
 ```
 
 You can even use your custom replacements function from your own javascript module.
 Here is a simple example to mask all the email.
 ```bash
-npx pg-anon-dump in.sql \
-  --extension ./myExtension.js \
-  --list=email:extension.maskEmail
+npx pg-anon-dump in.sql --extension ./myExtension.js --list=email:extension.maskEmail
 ```
 
 ```javascript
